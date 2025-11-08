@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Code2, Palette, Rocket } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
+import profileImg from "@/assets/Profile_img.jpg";
 
 const highlights = [
   {
@@ -81,8 +82,8 @@ export const AboutSection = () => {
             className="relative"
           >
             <div className="aspect-square rounded-2xl bg-gradient-warm p-1">
-              <div className="w-full h-full rounded-2xl bg-card flex items-center justify-center">
-                <p className="text-6xl">👨‍💻</p>
+              <div className="w-full h-full rounded-2xl bg-card overflow-hidden">
+                <img src={profileImg} alt="Profile" className="w-full h-full object-cover" />
               </div>
             </div>
             <div className="absolute -bottom-6 -right-6 w-32 h-32 rounded-full bg-secondary/30 blur-3xl -z-10"></div>

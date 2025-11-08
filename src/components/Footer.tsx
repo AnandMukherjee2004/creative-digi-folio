@@ -42,7 +42,7 @@ export const Footer = () => {
             <h4 className="font-semibold text-lg">Connect</h4>
             <div className="flex gap-4">
               <a
-                href="https://github.com"
+                href="https://github.com/AnandMukherjee2004/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -50,7 +50,7 @@ export const Footer = () => {
                 <Github size={18} />
               </a>
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/anand-mukherjee-b9a46a1bb/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
@@ -58,7 +58,7 @@ export const Footer = () => {
                 <Linkedin size={18} />
               </a>
               <a
-                href="mailto:hello@example.com"
+                href="mailto:anandmukherjee2004@gmail.com"
                 className="w-10 h-10 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300"
               >
                 <Mail size={18} />

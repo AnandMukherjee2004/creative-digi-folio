@@ -15,7 +15,7 @@ export const HeroSection = () => {
           className="space-y-6 z-10"
         >
           <div className="space-y-2">
-            <p className="text-primary font-semibold text-lg">Hello, I'm</p>
+            <p className="text-primary font-semibold text-lg">Hello, I'm Anand</p>
             <h1 className="text-5xl md:text-7xl font-bold leading-tight">
               Creative
               <br />
@@ -40,7 +40,7 @@ export const HeroSection = () => {
 
           <div className="flex gap-4 pt-4">
             <a
-              href="https://github.com"
+              href="https://github.com/AnandMukherjee2004/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
@@ -48,7 +48,7 @@ export const HeroSection = () => {
               <Github size={20} />
             </a>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/in/anand-mukherjee-b9a46a1bb/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
@@ -56,7 +56,7 @@ export const HeroSection = () => {
               <Linkedin size={20} />
             </a>
             <a
-              href="mailto:hello@example.com"
+              href="mailto:anandmukherjee2004@gmail.com"
               className="w-12 h-12 rounded-full border-2 border-primary flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110"
             >
               <Mail size={20} />

@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -47,7 +46,6 @@ export const Navigation = () => {
               {item.label}
             </a>
           ))}
-          <ThemeToggle />
           <Button className="bg-gradient-warm border-0">
             Let's Talk
           </Button>
@@ -77,7 +75,6 @@ export const Navigation = () => {
               </a>
             ))}
             <div className="flex items-center gap-4">
-              <ThemeToggle />
               <Button className="bg-gradient-warm border-0 flex-1">
                 Let's Talk
               </Button>

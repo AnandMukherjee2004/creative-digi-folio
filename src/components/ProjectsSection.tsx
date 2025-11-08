@@ -2,44 +2,56 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github } from "lucide-react";
+import waterApp from "@/assets/waterApp.png";
+import questify from "@/assets/questify_ai.jpeg";
+import taxnova from "@/assets/tax_nova.png";
 
 const projects = [
   {
-    title: "E-Commerce Platform",
-    description: "A modern, responsive online store with real-time inventory management and seamless checkout experience.",
-    tech: ["React", "Node.js", "MongoDB", "Stripe"],
-    image: "🛒",
+    "title": "Questify Ai",
+    "description": "An intelligent AI-powered interview preparation platform that helps job seekers practice and master their interview skills through personalized mock interviews and real-time feedback.",
+    "tech": [
+      "Next.js 15",
+      "TypeScript",
+      "n8n",
+    ],
+    "image": questify,
+    "github": "https://github.com/AnandMukherjee2004/Questify_Ai",
+    "demo": ""
   },
+
   {
-    title: "3D Portfolio Gallery",
-    description: "Interactive 3D showcase using Three.js with smooth animations and immersive user experience.",
-    tech: ["Three.js", "React", "WebGL", "GSAP"],
-    image: "🎨",
+    "title": "EPICS",
+    "description": "An intelligent web-based platform for water quality monitoring, potability testing, real-time analytics, and AI-powered guidance. EPICS enables users to analyze water samples, visualize quality metrics via dashboards, and interact with a smart chatbot for water safety advice.",
+    "tech": [
+      "React.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Chart.js",
+      "Recharts",
+      "Google Gemini API",
+    ],
+    "image": waterApp,
+    "github": "https://github.com/AnandMukherjee2004/EPICS",
+    "demo": "https://epics-neon.vercel.app/"
   },
+
   {
-    title: "Task Management App",
-    description: "Collaborative project management tool with real-time updates and team collaboration features.",
-    tech: ["Next.js", "PostgreSQL", "Prisma", "Socket.io"],
-    image: "✅",
-  },
-  {
-    title: "AI Content Generator",
-    description: "Machine learning powered content creation tool with natural language processing capabilities.",
-    tech: ["Python", "TensorFlow", "React", "FastAPI"],
-    image: "🤖",
-  },
-  {
-    title: "Social Media Dashboard",
-    description: "Analytics platform for tracking social media metrics with beautiful data visualizations.",
-    tech: ["React", "D3.js", "Express", "Redis"],
-    image: "📊",
-  },
-  {
-    title: "Weather Forecast App",
-    description: "Real-time weather application with location-based forecasts and interactive maps.",
-    tech: ["React", "API Integration", "Mapbox", "Chart.js"],
-    image: "🌤️",
-  },
+    "title": "TaxNova",
+    "description": "A modern tax management platform designed to streamline tax calculations, filings, and compliance. TaxNova provides intuitive tools for individuals and businesses to handle taxes efficiently, featuring automated computation, secure document management, and insightful analytics.",
+    "tech": [
+      "Vite",
+      "React",
+      "TypeScript",
+      "Tailwind CSS"
+    ],
+    "image": taxnova,
+    "github": "https://github.com/AnandMukherjee2004/TaxNova",
+    "demo": "https://tax-nova.vercel.app/"
+  }
+
+
+  
 ];
 
 export const ProjectsSection = () => {
@@ -72,9 +84,19 @@ export const ProjectsSection = () => {
             >
               <Card className="hover-lift bg-card border-border h-full overflow-hidden group">
                 <CardContent className="p-0">
-                  <div className="aspect-video bg-gradient-warm flex items-center justify-center text-8xl group-hover:scale-110 transition-transform duration-500">
-                    {project.image}
-                  </div>
+                  {typeof project.image === "string" && /\.(png|jpe?g|gif|webp|svg)$/i.test(project.image) ? (
+                    <div className="aspect-video overflow-hidden">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-video bg-gradient-warm flex items-center justify-center text-8xl group-hover:scale-110 transition-transform duration-500">
+                      {project.image}
+                    </div>
+                  )}
                   <div className="p-6 space-y-4">
                     <h3 className="text-2xl font-bold">{project.title}</h3>
                     <p className="text-muted-foreground leading-relaxed">
@@ -91,14 +113,33 @@ export const ProjectsSection = () => {
                       ))}
                     </div>
                     <div className="flex gap-3 pt-2">
-                      <Button variant="outline" size="sm" className="flex-1 border-2 border-primary hover:bg-primary/10">
-                        <Github size={16} className="mr-2" />
-                        Code
-                      </Button>
-                      <Button size="sm" className="flex-1 bg-gradient-warm border-0">
-                        <ExternalLink size={16} className="mr-2" />
-                        Demo
-                      </Button>
+                      {project.github ? (
+                        <Button asChild variant="outline" size="sm" className="flex-1 border-2 border-primary hover:bg-primary/10">
+                          <a href={project.github} target="_blank" rel="noopener noreferrer">
+                            <Github size={16} className="mr-2" />
+                            Code
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button variant="outline" size="sm" className="flex-1 border-2 border-primary" disabled>
+                          <Github size={16} className="mr-2" />
+                          Code
+                        </Button>
+                      )}
+
+                      {project.demo ? (
+                        <Button asChild size="sm" className="flex-1 bg-gradient-warm border-0">
+                          <a href={project.demo} target="_blank" rel="noopener noreferrer">
+                            <ExternalLink size={16} className="mr-2" />
+                            Demo
+                          </a>
+                        </Button>
+                      ) : (
+                        <Button size="sm" className="flex-1 bg-gradient-warm border-0" disabled>
+                          <ExternalLink size={16} className="mr-2" />
+                          Demo
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </CardContent>

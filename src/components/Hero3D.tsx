@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
+import { useTheme } from "next-themes";
 import * as THREE from "three";
 
 interface WorkspaceSceneProps {
@@ -151,6 +152,8 @@ const WorkspaceScene = ({ mouseX, mouseY, isHovered }: WorkspaceSceneProps) => {
 export const Hero3D = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
+  const { theme } = useTheme();
+  const isDark = theme === "dark";
 
   const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     const rect = event.currentTarget.getBoundingClientRect();
@@ -171,31 +174,49 @@ export const Hero3D = () => {
         camera={{ position: [0, 2, 6], fov: 50 }}
         shadows
       >
-        {/* Ambient lighting */}
-        <ambientLight intensity={0.6} />
+        {/* Ambient lighting - dimmer at night */}
+        <ambientLight intensity={isDark ? 0.2 : 0.6} />
         
-        {/* Main directional light with warm tone */}
+        {/* Main directional light - softer/cooler at night */}
         <directionalLight 
           position={[5, 8, 5]} 
-          intensity={1.2} 
+          intensity={isDark ? 0.4 : 1.2} 
           castShadow
           shadow-mapSize-width={1024}
           shadow-mapSize-height={1024}
-          color="#FFF5E6"
+          color={isDark ? "#B8D4E8" : "#FFF5E6"}
         />
         
-        {/* Accent warm lights */}
-        <pointLight position={[-5, 3, 2]} intensity={0.8} color="#E8B76A" />
-        <pointLight position={[5, 2, -3]} intensity={0.6} color="#D97757" />
+        {/* Accent lights - cooler/dimmer at night */}
+        <pointLight 
+          position={[-5, 3, 2]} 
+          intensity={isDark ? 0.4 : 0.8} 
+          color={isDark ? "#6B8CA8" : "#E8B76A"} 
+        />
+        <pointLight 
+          position={[5, 2, -3]} 
+          intensity={isDark ? 0.3 : 0.6} 
+          color={isDark ? "#5A7A8E" : "#D97757"} 
+        />
         
-        {/* Subtle rim light */}
+        {/* Rim light - moon-like at night */}
         <spotLight 
           position={[0, 5, -5]} 
-          intensity={0.5} 
+          intensity={isDark ? 0.8 : 0.5} 
           angle={0.6}
           penumbra={1}
-          color="#C4A27C"
+          color={isDark ? "#9EB8D4" : "#C4A27C"}
         />
+        
+        {/* Night-specific moon light */}
+        {isDark && (
+          <pointLight 
+            position={[-8, 6, -8]} 
+            intensity={0.6} 
+            color="#B8D4E8"
+            distance={20}
+          />
+        )}
         
         <WorkspaceScene 
           mouseX={mousePosition.x} 
